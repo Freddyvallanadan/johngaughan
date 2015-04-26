@@ -13,12 +13,11 @@ class Dbconnection{
     function __construct() {
             
         $servername = "localhost";
-        $username = "snake_john";
-        $name = "snake_john";
-        $password = "=4.;~aI$4fZ1";
+        $username = "root";
+        $password = "";
 
         // Create connection
-        $this->setConn(mysqli_connect($servername, $username, $password, $name));
+        $this->setConn(mysqli_connect($servername, $username, $password,'john_gaughan'));
 
         // Check connection
         if (!$this->getConn()) {

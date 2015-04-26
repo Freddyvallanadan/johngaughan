@@ -1,15 +1,33 @@
 <?php  
-if(isset($_GET['id'])):
+if(isset($_GET['type'])):
 	include_once './classes/Dbfunction.php';
 	$dbfunc=new Dbfunction();
-	$album_id = $_GET['id']; 
+	$type=$_GET['type'];
+	$album_id = $_GET['id'];
 	$album_title="";
+	$album_price="";
+	if($type=='album'){
 	foreach ($dbfunc->albums() as $album) {
 		if($album["id"]==$album_id){
 			$album_title=$album['album_title'];
 			$album_price=$album['album_price'];
 		}
 	}
+}
+	else if($type=='track'){ 
+
+	foreach ($dbfunc->albums() as $album) {
+		if($album['childs'] != null):
+		foreach ($album['childs'] as $key => $track) {
+		if($track["id"]==$album_id){
+			$album_title=$track['track_title'];
+			$album_price=$track['track_price'];
+		}
+	}
+	endif;
+	}
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -81,7 +99,7 @@ if(isset($_GET['id'])):
 			<input type="email" required="required" name="email" id="email" placeholder="Enter your email ID" />
 			<input type="submit" value="proceed" />
 		</form>
-		<form action="process" name="hidden_form" method="POST" id="hid_frm" style="display:none" >
+		<form action="process.php" name="hidden_form" method="POST" id="hid_frm" style="display:none" >
 			<input type="hidden" name="itemname" value="<?php echo $album_title;?>" /> 
 			<input type="hidden" name="itemnumber" value="<?php echo $album_id;?>" />  
 			<input type="hidden" name="itemprice" value="<?php echo $album_price;?>" />
@@ -93,7 +111,7 @@ if(isset($_GET['id'])):
 	<script type="text/javascript">
 $(document).ready(function(){
 $("#purchase_form").submit(function(e){
-	$href="check_paid";
+	$href="check_paid.php";
 	$email=$("#email").val();
 	$id=<?php echo $_GET['id'] ?>;
 e.preventDefault();

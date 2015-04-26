@@ -1,3 +1,7 @@
+	<?include_once './classes/Dbfunction.php';
+	$dbfunc=new Dbfunction();
+	$albums=$dbfunc->albums();
+	?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -57,16 +61,25 @@ John’s unique style and sound continue to impact the lives of all who listen.
 		</div>
 		<div class="clearBoth"></div>
 		<div class="album container">
+		<?php foreach ($albums as $key => $album) {?>		
 			<div class="block" aria-haspopup="true">
-				<h2>ThankYou Very Much</h2>
-				<img alt="" src="images/m-img1.jpg"/>
-				<div class="price">£6.50</div>
+				<h2><?php echo $album['album_title']?></h2>
+				<img alt="" src="<?php echo $album['img_src']?>"/>
+				<div class="price">£<?php print($album['album_price'])?></div>
 				<div class="pay">
-					<a href="purchase.php?id=1001">Buy now</a>
+					<a href="purchase.php?type=album&id=<?php echo $album['id']?>">Buy now</a>
 				</div>
+				<?php if($album['childs']!=null):?>
+<?php foreach($album['childs'] as $track): ?>
+	<div class="childs"><span><?php echo $track['track_title'] ?></span><span>£<?php echo $track['track_price'] ?></span><span><div class="pay">
+					<a href="purchase.php?type=track&id=<?php echo $track['id']?>">Buy now</a>
+				</div></span></div>
+<?php endforeach;?>
+				<?php endif; ?>
 				<div class="clearBoth"></div>
 			</div>
-			<div class="block" aria-haspopup="true">
+			<?php }?>
+			<!-- <div class="block" aria-haspopup="true">
 				<h2>Love is the Key</h2>
 				<img alt="" src="images/m-img2.jpg"/>
 				<div class="price">£6.50</div>
@@ -83,7 +96,7 @@ John’s unique style and sound continue to impact the lives of all who listen.
 					<a href="purchase.php?id=1003">Buy now</a>
 				</div>
 				<div class="clearBoth"></div>
-			</div>
+			</div> -->
 		</div>
 	</section>		
 	<footer>

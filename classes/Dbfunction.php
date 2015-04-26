@@ -48,20 +48,38 @@ class Dbfunction{
                 array(
                   "id"=>1001,
                   "album_title"=>"ThankYou Very Much",
-                  "album_price"=>6.50,
-                  "link"=>"http://www.johngaughanministries.com/downloads/ThankYou_Very_Much.zip"
+                  "album_price"=>6.51,
+                  "img_src"=>"images/m-img1.jpg",
+                  "link"=>"http://www.johngaughanministries.com/downloads/ThankYou_Very_Much.zip",
+                  "childs"=>array( "track1"=>array("id"=>10011,
+                                                   "track_title"=>"track1",
+                                                   "track_price"=>1,
+                                                   "link"=>"downloads/track1.zip"),
+                                    "track2"=>array("id"=>10012,
+                                                   "track_title"=>"track1",
+                                                   "track_price"=>2,
+                                                   "link"=>"downloads/track2.zip")
+                                  )
                   ),
                  array(
                   "id"=>1002,
                   "album_title"=>"Love is the Key",
                   "album_price"=>6.50,
-                  "link"=>"http://www.johngaughanministries.com/downloads/Love_is_the_Key.zip"
+                  "img_src"=>"images/m-img2.jpg",
+                  "link"=>"http://www.johngaughanministries.com/downloads/Love_is_the_Key.zip",
+                  "childs"=>array( "track1"=>array("id"=>10011,
+                                                   "track_title"=>"track1",
+                                                   "track_price"=>1,
+                                                   "link"=>"downloads/track1.zip")
+                                  )
                   ),
                   array(
                   "id"=>1003,
+                  "img_src"=>"images/m-img3.jpg",
                   "album_title"=>"Lord Jesus, You are so Beautiful",
                   "album_price"=>6.50,
-                  "link"=>"http://www.johngaughanministries.com/downloads/Lord_Jesus_You_are_so_Beautiful.zip"
+                  "link"=>"http://www.johngaughanministries.com/downloads/Lord_Jesus_You_are_so_Beautiful.zip",
+                  "childs"=>null
                   )
         );
     }
