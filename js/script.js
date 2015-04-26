@@ -32,7 +32,7 @@ $(document).ready(function(){
 	/*Login Check*/
         $("#login").click(function(e){
         	e.preventDefault();
-           $.post("login",{username:$("#username").val(),password:$("#password").val()},function(data){
+           $.post("login.php",{username:$("#username").val(),password:$("#password").val()},function(data){
                try{
               var newobj=JSON.parse(data);
              if(newobj.status){
@@ -59,7 +59,7 @@ $(document).ready(function(){
             jQuery("#hidden_form").show();
             var id=$(this).attr("href");
             $("#form_id").val(id);
-            $.post("edit",{id:id,edit:"edit"},function(data){
+            $.post("edit.php",{id:id,edit:"edit"},function(data){
 			try{
               var newobj=JSON.parse(data);
              jQuery("#title").val(newobj.title);
@@ -184,7 +184,7 @@ if(r){
             if(r){
             var id=$(this).attr("href");
             var el=$(this);
-              $.post("del",{id:id},function(data){
+              $.post("del.php",{id:id},function(data){
                try{
               var newobj=JSON.parse(data);
              if(newobj.result!="Not Deleted"){

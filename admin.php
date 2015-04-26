@@ -72,7 +72,7 @@ $(".bg-img").hide();
 });
 $("#reset_form").submit(function(e){
 e.preventDefault();
-$.post("reset_link",{"email":$("#email").val()},function(data){
+$.post("reset_link.php",{"email":$("#email").val()},function(data){
 $obj=JSON.parse(data);
 if($obj.status==1){
 	$(".remess").html("<div>"+$obj.mess+"</div>");
